@@ -1,0 +1,45 @@
+﻿@model List<ReservationDataTableViewModel>
+
+@if (Model != null && Model.Count > 0)
+{
+
+    <table class="table table-sm">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Table</th>
+                <th scope="col">Size</th>
+                <th scope="col">Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 1; i <= Model.Count; i++)
+            {
+                <tr>
+                    <th scope="row">@i</th>
+                    <td>@Model[i-1].TableName</td>
+                    <td>@Model[i-1].Size</td>
+                    <td>@Model[i-1].Timing</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <table class="table table-sm">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Table</th>
+                <th scope="col">Size</th>
+                <th scope="col">Time</th>
+            </tr>
+        </thead>
+        <tbody>
+           <tr>
+               <th colspan="4" class="text-center">No Data! Start By Making Reservations! </th>
+           </tr>
+        </tbody>
+    </table>
+}

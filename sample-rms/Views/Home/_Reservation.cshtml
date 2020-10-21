@@ -1,0 +1,32 @@
+﻿@model ReservationViewModel
+@{ 
+    List<Table> tables = this.ViewBag.Tables;
+}
+<form id="frm_new_reservation" asp-action="Reservation" asp-controller="Home" enctype="multipart/form-data">
+    <div class="form-row">
+        <input type="hidden" asp-for="ReservationId"/>
+        <div class="col-4">
+            <div class="form-group">
+                <label>Table</label>
+                <select class="form-control" asp-for="TableId">
+                    <option value="">-Select-</option>
+                    @if(tables != null)
+                    {
+                        foreach(var item in tables)
+                        {
+                            <option value="@item.Id">@item.Location</option>
+                        }
+                    }
+                </select>
+                <span asp-validation-for="TableId"></span>
+            </div>
+        </div>
+        <div class="col-8">
+            <div class="form-group">
+                <label>Time</label>
+                <input type="datetime-local" asp-for="Time" class="form-control"/>
+                <span asp-validation-for="Time"></span>
+            </div>
+        </div>
+    </div>
+</form>
